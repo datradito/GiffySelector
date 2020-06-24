@@ -6,6 +6,7 @@ import ListGifs from "./components/ListGifs";
 import Home from "./pages/Home";
 import SearchResults from "./pages/SearchResults";
 import Detail from "./pages/Detail";
+import { GifsContextProvider } from "./context/GifsContext";
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
             alt="Datwebdesign Logo"
           />
         </Link>
-
-        <Route component={Home} path="/" />
-        <Route component={SearchResults} path="/search/:keyword" />
-        <Route component={Detail} path="/gif/:id" />
+        <GifsContextProvider>
+          <Route component={Home} path="/" />
+          <Route component={SearchResults} path="/search/:keyword" />
+          <Route component={Detail} path="/gif/:id" />
+        </GifsContextProvider>
       </section>
     </div>
   );

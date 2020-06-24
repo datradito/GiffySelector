@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import ListGifs from "../../components/ListGifs";
 import { Link, useLocation } from "wouter";
-import { Button } from "@chakra-ui/core";
+import useGifs from "../../hooks/useGifs";
+import ListGifs from "../../components/ListGifs";
 
 const POPULAR_GIFS = ["Matrix", "Rick", "Morty"];
 
-const Home = () => {
+export default function Home() {
   const [keyword, setKeyword] = useState("");
-  const [path, pushLocation] = useLocation(); //Hook from wouter
+  const [path, pushLocation] = useLocation();
+  //const ppp = useLocation(); //Hook from wouter
+  console.log("PATH", path);
+  const { loading, gifs } = useGifs();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     pushLocation(`/search/${keyword}`);
-    console.log(keyword);
+    console.log("keyword:", keyword);
   };
 
   const handlechange = (e) => {
@@ -30,6 +33,7 @@ const Home = () => {
         />
         <button>Search</button>
       </form>
+      <h3>Ultimos Gifs buscados...</h3>
       <h3>Los Gifs mas populares</h3>
       <ul>
         {POPULAR_GIFS.map((popGif) => (
@@ -40,6 +44,4 @@ const Home = () => {
       </ul>
     </>
   );
-};
-
-export default Home;
+}

@@ -9,7 +9,7 @@ const Gifs = ({ title, id, url }) => (
       <Heading as="h4" size="md">
         {title}
       </Heading>
-      <Image alt={title} src={url} size="100px" rounded="full" />
+      <Image loading="lazy" alt={title} src={url} size="100px" rounded="full" />
     </Link>
   </div>
 );

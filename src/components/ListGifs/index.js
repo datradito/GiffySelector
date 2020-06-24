@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Spinner } from "@chakra-ui/core";
+import React from "react";
 import Gif from "../Gif";
 
 const ListGifs = ({ gifs }) => {
@@ -8,7 +7,6 @@ const ListGifs = ({ gifs }) => {
       {gifs.map(({ id, title, url }) => (
         <Gif key={id} id={id} title={title} url={url} />
       ))}
-      ;
     </>
   );
 };

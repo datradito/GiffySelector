@@ -1,6 +1,7 @@
 const getGifs = async ({ keyword } = {}) => {
+  console.log(keyword);
   const apiURL = `${process.env.REACT_APP_API_GIFFY}/search?api_key=${process.env.REACT_APP_KEY_GIFFY}&q=${keyword}&limit=15&&offset=0&rating=G&lang=en`;
-
+  console.log("apiURL:", apiURL);
   return fetch(apiURL)
     .then((res) => res.json())
     .then((res) => {
