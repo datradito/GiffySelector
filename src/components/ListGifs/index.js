@@ -1,6 +1,9 @@
 import React from "react";
 import Gif from "../Gif";
 
+//TODO Ver display:grid
+//TODOfracciones en columnas
+//TODO grid_template-rows: masonry
 const ListGifs = ({ gifs }) => {
   return (
     <>

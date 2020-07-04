@@ -1,7 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 
 //Creo Hook para utilizar el intersection
-export default function useNearScreen({ distance = "100px" } = {}) {
+//Con la prop once puedo manejar q el usenearscreen pase a false
+//para q no se pueda hacer nada luego
+export default function useNearScreen({
+  distance = "100px",
+  externalRef,
+  once = true,
+} = {}) {
   //useRef es Como un state pero no renderiza el componente cuando cambia el valor
   //Lo usamos para interactuar con el DOM
   const fromRef = useRef();
@@ -11,12 +17,16 @@ export default function useNearScreen({ distance = "100px" } = {}) {
   useEffect(() => {
     let observer;
 
+    const element = externalRef ? externalRef.current : fromRef.current;
+
     const onChange = (entries) => {
       const element = entries[0];
       if (element.isIntersecting) {
         setIsNearScreen(true);
         //Desconecto para evitar actualizar el estado constantemente.
-        observer.disconnect();
+        once && observer.disconnect();
+      } else {
+        !once && setIsNearScreen(false);
       }
     };
 
