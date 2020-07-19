@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "wouter";
-import useGifs from "hooks/useGifs";
-import ListGifs from "components/ListGifs";
-import Category from "components/Category";
+//TODO import useGifs from "hooks/useGifs";
+//TODO import ListGifs from "components/ListGifs";
+//TODO import Category from "components/Category";
 import TrendingSearches from "components/TrendingSearches";
 
 const POPULAR_GIFS = ["Matrix", "Rick", "Morty"];
@@ -10,9 +10,8 @@ const POPULAR_GIFS = ["Matrix", "Rick", "Morty"];
 export default function Home() {
   const [keyword, setKeyword] = useState("");
   const [path, pushLocation] = useLocation();
-  //const ppp = useLocation(); //Hook from wouter
   console.log("PATH", path);
-  const { loading, gifs } = useGifs();
+  //TODO DEL const { loading, gifs } = useGifs();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();

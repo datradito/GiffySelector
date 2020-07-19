@@ -18,7 +18,7 @@ export default function SearchForm({
 
   const onSubmit = ({ keyword }) => {
     if (keyword !== "") {
-      // navegar a otra ruta
+      //TODO avegar a otra ruta
       pushLocation(`/search/${keyword}/${rating}`);
     }
   };

@@ -38,16 +38,16 @@ export default function useNearScreen({
         ? IntersectionObserver
         : import("intersection-observer")
     ).then(() => {
-      //VER IntersectionObserver
+      //TODO IntersectionObserver
       observer = new IntersectionObserver(onChange, {
         rootMargin: distance,
       });
       //current es el valor actual de la referencia
-      observer.observe(fromRef.current);
+      if (element) observer.observe(element);
     });
 
     //Idem a la desconexion en el onChange pero para el useEffect
     return () => observer && observer.disconnect();
   });
-  return isNearScreen;
+  return { isNearScreen, fromRef };
 }
